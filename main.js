@@ -20,25 +20,49 @@ $(document.body).on("dragend", ".part", function(ev) {
   dragElement = null;
 });
 
-
 $(".ext").on("dragover", ".putclone", function(ev) {
   ev.originalEvent.preventDefault();
+  if(dragElement.classList.contains("word")) return;
   const rect = dragElement.getBoundingClientRect();
   this.style.width = rect.width+"px";
   this.style.height = rect.height+"px";
 });
 
 
-$(".ext").on("drop", ".putclone", function(ev) {
+$("body").on("drop", ".ext .putclone", function(ev) {
   const div = document.createElement("div");
   div.classList.add("word", "part");
   div.innerHTML = dragElement.innerHTML;
-  div.dataset.value = dragElement.dataset.value;
+  div.dataset.value = dragElement.dataset.value.replace("_", " ");
+  div.setAttribute("ctitle", div.dataset.value);
   div.draggable = true;
 
-  ev.delegateTarget.insertBefore(div, ev.delegateTarget.lastChild);
+  this.parentNode.insertBefore(div, this.parentNode.lastChild);
 });
 
+$(document.body).on("drop", ".word.part", function(ev) {
+  if (dragElement.classList.contains("word")) {
+    [this.innerHTML, dragElement.innerHTML] = [dragElement.innerHTML, this.innerHTML];
+    [this.dataset.value, dragElement.dataset.value] = [dragElement.dataset.value, this.dataset.value];
+    this.setAttribute("ctitle", this.dataset.value);
+    dragElement.setAttribute("ctitle", dragElement.dataset.value);
+
+  } else {
+    this.innerHTML     = dragElement.innerHTML;
+    this.dataset.value = dragElement.dataset.value;
+  }
+});
+
+$("body").on("dragover", function(ev) {
+  ev.originalEvent.preventDefault();
+});
+
+$("body").on("drop", function(ev) {
+  if (ev.target.classList.contains("putclone"))return;
+  if (ev.target.classList.contains("part")) return;
+  if (!dragElement.classList.contains("word")) return;
+  dragElement.remove();
+});
 $(".ext").on("dragleave", ".putclone", function(ev) {
   this.style = "";
 });

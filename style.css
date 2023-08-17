@@ -29,6 +29,8 @@ img {
 main {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 input {
@@ -53,6 +55,7 @@ input {
   box-shadow: 0px 0px 5px hsl(0, 0%, 80%), 
     inset 0px 0px 5px hsl(0, 0%, 90%);
   max-height: 90vh;
+  min-width: 310px;
   width: 25vw;
   padding: 3vh 3vh;
   margin: 2vh 1vh;
@@ -135,6 +138,9 @@ input {
 
 .ext {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+    
   gap: 0.2rem;
 
   font-weight: 400;
@@ -189,4 +195,50 @@ input {
 
 .nav {
   display: flex;
+}
+
+@media screen and (width<1160px) {
+  .phrase.bigField {
+    display: none;
+  }
+
+  .part {
+    -webkit-user-drag: none;
+    user-select:text;
+  }
+
+  .part:hover {
+    border-color: transparent !important;
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  .bigField {
+    overflow: hidden;
+    max-height: none;
+  }
+}
+
+.part {
+  display: flex;
+  justify-content: center;
+}
+
+[ctitle]::after {
+  content: attr(ctitle);
+  transition: 0.2s;
+  position: absolute;
+  font-size: 1rem;
+  transform: translate(-10%, -80%);
+  color: hsl(120, 100%, 40%, 0.5);
+  background-color: hsl(0, 0%, 100%, 0.90);
+  border-radius: 0.5rem;
+  opacity: 0%;
+}
+[ctitle]:hover::after {
+  transform: translate(10%, -110%);
+  color: hsl(120, 100%, 40%, 1);
+  opacity: 100%;
 }
