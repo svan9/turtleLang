@@ -1,0 +1,176 @@
+@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500);
+
+:root {
+  --font-family-: 'Nunito', sans-serif;
+}
+
+* {
+  font-weight: 300;
+  font-family: var(--font-family-);
+}
+
+body {
+  background-color: hsl(0, 0%, 95%);
+
+  display: grid;
+  justify-items: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+img {
+  width: 64px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+main {
+  display: flex;
+  gap: 1rem;
+}
+
+input {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  
+  margin-bottom: 1rem;
+}
+
+.title::after {
+  content: ": "
+}
+
+.bigField {
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0px 0px 5px hsl(0, 0%, 80%), 
+    inset 0px 0px 5px hsl(0, 0%, 90%);
+  min-height: 90vh;
+  width: 25vw;
+  padding: 3vh 3vh;
+  margin: 2vh 1vh;
+  border-radius: 1rem;
+}
+
+.element {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+/* .element .trans {
+  right: 1px;
+} */
+
+.element .part {
+  transform: translate(0, 0);
+  background-color: hsl(0, 0%, 100%);
+
+  border: 1px solid hsl(0, 0%, 100%);
+  border-radius: .5rem;
+  padding: 0 0.2rem;
+  transition: 0.2s;
+}
+
+.element .part:hover {
+  border: 1px solid hsl(0, 0%, 80%);
+}
+
+.element .part.empty {
+  border: 1px dashed hsl(0, 0%, 70%);
+  opacity: 50%;
+  /* transition: 0s; */
+}
+
+.swing {
+  animation: infinite 4s swing;
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(80deg);
+  }
+
+  66% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-80deg);
+  }
+}
+
+.list {
+  overflow-y: auto;
+  position: relative;
+}
+
+.ext {
+  display: flex;
+  gap: 0.2rem;
+
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.ext .putclone {
+  height: 32px;
+  width: 32px;
+  border: 1px dashed hsl(0, 0%, 70%);
+  opacity: 50%;
+  border-radius: 0.5rem;
+}
+
+.ext .part {
+  transform: translate(0, 0);
+
+  background-color: hsl(0, 0%, 100%);
+  border: 1px solid hsl(0, 0%, 100%);
+
+  border-radius: 0.5rem;
+  padding: 0 0.2rem;
+  transition: 0.2s;
+}
+
+.ext .part:hover {
+  border: 1px solid hsl(0, 0%, 80%);
+}
+
+.ext .part.empty {
+  border: 1px dashed hsl(0, 0%, 70%);
+  opacity: 50%;
+  /* transition: 0s; */
+}
+
+.addNewExt {
+  cursor: pointer;
+}
+
+.body {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav box-icon {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;;
+}
+
+.nav {
+  display: flex;
+}
