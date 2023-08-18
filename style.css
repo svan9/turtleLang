@@ -235,10 +235,12 @@ input {
   color: hsl(120, 100%, 40%, 0.5);
   background-color: hsl(0, 0%, 100%, 0.90);
   border-radius: 0.5rem;
+  visibility: hidden;
   opacity: 0%;
 }
 [ctitle]:hover::after {
   transform: translate(10%, -110%);
   color: hsl(120, 100%, 40%, 1);
+  visibility: visible;
   opacity: 100%;
 }
